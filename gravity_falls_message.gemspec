@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = "gravity_falls_message"
   spec.version       = GravityFallsMessage::VERSION
   spec.authors       = ["Brian Hall"]
-  spec.email         = ["brian@codesherpas.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
+  spec.email         = ["brian@brianhalldeveloper.com"]
+  spec.summary       = %q{A gem to encode and decode messages using the ciphers as presented on Disney XD's show Gravity Falls.}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
   spec.license       = "MIT"
