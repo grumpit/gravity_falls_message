@@ -1,22 +1,26 @@
-# GravityFallsMessage
+# GravityFalls
 
-TODO: Write a gem description
+A gem to encode and decode messages using the ciphers as presented on Disney XD's show Gravity Falls. For more detailed information about the ciphers used, visit [the Gravity Falls Wiki page](http://gravityfalls.wikia.com/wiki/List_of_cryptograms "Gravity Falls Wiki - List of cryptograms")
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'gravity_falls_message'
-```
+    gem 'gravity_falls'
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+## Supported Ciphers
 
-    $ gem install gravity_falls_message
+This gem currently supports the following ciphers:
+
+- A1Z26
+- atbash
+- binary
+- caesar
+- vigenere
 
 ## Usage
 
