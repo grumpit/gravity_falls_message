@@ -46,7 +46,8 @@ module GravityFallsMessage
       answer.delete("\0")
     end
     
-    def self.caesar arr, encode=false, options={}
+    def self.caesar arr, options={}
+      encode = options[:encode]
       default_shift = options[:shift] || 3
       key = options[:key].split(//) if options[:key]
       answer = arr.collect do |c|
@@ -64,8 +65,8 @@ module GravityFallsMessage
       answer.join('').upcase
     end
   
-    def self.vigenere arr, encode=false, options={}
-      caesar(arr, encode, options)
+    def self.vigenere arr, options={}
+      caesar(arr, options)
     end
     
   end
