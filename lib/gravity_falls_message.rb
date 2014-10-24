@@ -12,8 +12,20 @@ module GravityFallsMessage
     when 'a1z26' then Cipher.a1z26(message)
     when 'atbash' then Cipher.atbash(message)
     when 'binary' then Cipher.binary(message)
-    when 'caesar' then Cipher.caesar(message, nil, false, options[:shift])
-    when 'vigenere' then Cipher.vigenere(message, options[:key])
+    when 'caesar' then Cipher.caesar(message, false, options)
+    when 'vigenere' then Cipher.vigenere(message, false, options)
+    end
+  end
+  
+  def self.encode message, cipher, options={}
+    message = message.split(//) if cipher != 'binary'
+
+    case cipher
+    when 'a1z26' then Cipher.a1z26(message, true)
+    when 'atbash' then Cipher.atbash(message, true)
+    when 'binary' then Cipher.binary(message, true)
+    when 'caesar' then Cipher.caesar(message, true, options)
+    when 'vigenere' then Cipher.vigenere(message, true, options)
     end
   end
   

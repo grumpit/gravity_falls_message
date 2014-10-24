@@ -22,7 +22,7 @@ module GravityFallsMessage
           encode ? mapped_alphabet[c.upcase] : mapped_alphabet.key(c.to_i)
         end
       end
-      encode ? answer.join('-').gsub(/-\s-/, ' ').gsub(/-(\W)/,'\1') : answer.join('')
+      encode ? answer.join('-').gsub(/-?(\s|")-/, '\1').gsub(/-(\W)-?/,'\1') : answer.join('')
     end
     
     def self.atbash arr, encode=false
@@ -38,17 +38,17 @@ module GravityFallsMessage
     
     def self.binary input, encode=false
       if encode
-        answer = [input].pack('B*')
+        answer = input.unpack('B*')[0]
       else
         answer = ''
         (0..input.length).step(8).each {|i| answer << input[i,8].to_i(2).chr}
       end
-      answer.delete!("\0")
+      answer.delete("\0")
     end
     
-    def self.caesar( arr, key=nil, encode=false, default_shift)
-      default_shift ||= 3
-      key = key.split(//) if key
+    def self.caesar arr, encode=false, options={}
+      default_shift = options[:shift] || 3
+      key = options[:key].split(//) if options[:key]
       answer = arr.collect do |c|
         val = key ? alphabet.index(key[0]) : default_shift
         shift_value = encode ? val : (val * -1)
@@ -64,8 +64,8 @@ module GravityFallsMessage
       answer.join('').upcase
     end
   
-    def self.vigenere arr, key, encode=false
-      caesar(arr, key, encode)
+    def self.vigenere arr, encode=false, options={}
+      caesar(arr, encode, options)
     end
     
   end

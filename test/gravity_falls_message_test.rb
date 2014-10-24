@@ -13,6 +13,10 @@ class GravityFallsMessageTest < Minitest::Test
       "IRHRMT ORPV GSV HSVKZIW GLMV" => "RISING LIKE THE SHEPARD TONE"
     }
     
+    @binary_crypts = {
+      "0101000001010101" => "PU", "01010000010101010101010000100000010000010100110001001100001000000101001101001001010110000010000001010000010010010100010101000011010001010101001100100000010101000100111101000111010001010101010001001000010001010101001000100001" => "PUT ALL SIX PIECES TOGETHER!"
+    }
+        
     @caesar_crypts = {
       'ZLGGOH' => 'WIDDLE',
       'VKLIWHU' => 'SHIFTER',
@@ -47,7 +51,9 @@ class GravityFallsMessageTest < Minitest::Test
   end
   
   should "decode a message using binary" do
-    assert_equal "PUT ALL SIX PIECES TOGETHER!", GravityFallsMessage.decode("01010000010101010101010000100000010000010100110001001100001000000101001101001001010110000010000001010000010010010100010101000011010001010101001100100000010101000100111101000111010001010101010001001000010001010101001000100001", 'binary')
+    @binary_crypts.each_pair do |cryptogram, solution|
+      assert_equal solution, GravityFallsMessage.decode(cryptogram, 'binary')
+    end
   end
   
   should "decode a message using the caesar cipher" do
@@ -61,4 +67,36 @@ class GravityFallsMessageTest < Minitest::Test
       assert_equal crypt[:solution], GravityFallsMessage.decode(crypt[:cryptogram], 'vigenere', {key: crypt[:key]})
     end
   end
+  
+  
+  should "encode a message using the a1z26 cipher" do
+    @a1z26_crypts.each_pair do |cryptogram, solution|
+      assert_equal cryptogram, GravityFallsMessage.encode(solution, 'a1z26')
+    end
+  end
+  
+  should "encode a message using the atbash cipher" do
+    @atbash_crypts.each_pair do |cryptogram, solution|
+      assert_equal cryptogram, GravityFallsMessage.encode(solution, 'atbash')
+    end
+  end
+  
+  should "encode a message using binary" do
+    @binary_crypts.each_pair do |cryptogram, solution|
+      assert_equal cryptogram, GravityFallsMessage.encode(solution, 'binary')
+    end
+  end
+  
+  should "encode a message using the caesar cipher" do
+    @caesar_crypts.each_pair do |cryptogram, solution|
+      assert_equal cryptogram, GravityFallsMessage.encode(solution, 'caesar')
+    end
+  end
+  
+  should "encode a message using the vigenere cipher" do
+    @vigenere_crypts.each do |crypt|
+      assert_equal crypt[:cryptogram], GravityFallsMessage.encode(crypt[:solution], 'vigenere', {key: crypt[:key]})
+    end
+  end
+  
 end
