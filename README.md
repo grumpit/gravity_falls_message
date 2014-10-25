@@ -80,6 +80,40 @@ Options other than those listed here are ignored.
 => "REMEMBER BIG HENRY"
 ```
 
+### Encoding Messages
+
+```console
+# encode a message using the A1Z26 cipher
+> message = "TO BE CONTINUED..."
+=> "TO BE CONTINUED..."
+> GravityFallsMessage.encode(message, 'a1z26')
+=> "20-15 2-5 3-15-14-20-9-14-21-5-4..."
+
+# encode a message using the atbash cipher
+> message = "NOT H.G. WELLS APPROVED."
+=> "NOT H.G. WELLS APPROVED."
+> GravityFallsMessage.encode(message, 'atbash')
+=> "MLG S.T. DVOOH ZKKILEVW."
+
+# encode a message using binary
+> message = "SHORT"
+=> "SHORT"
+> GravityFallsMessage.encode(message, 'binary')
+=> "0101001101001000010011110101001001010100"
+
+# encode a message using the caesar cipher
+> message = "WELCOME TO GRAVITY FALLS."
+=> "WELCOME TO GRAVITY FALLS."
+> GravityFallsMessage.encode(message, 'caesar')
+=> "ZHOFRPH WR JUDYLWB IDOOV."
+
+# encode a message using the vigenere cipher
+> message = "REMEMBER BIG HENRY"
+=> "REMEMBER BIG HENRY"
+> GravityFallsMessage.encode(message, 'vigenere', key: 'WHATEVS')
+=> "NLMXQWWN IIZ LZFNF"
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/gravity_falls_message/fork )
