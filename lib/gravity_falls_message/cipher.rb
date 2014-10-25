@@ -42,7 +42,7 @@ module GravityFallsMessage
     def self.caesar arr, options={}
       encode = options[:encode]
       default_shift = options[:shift] || 3
-      key = options[:key].split(//) if options[:key]
+      key = options[:key].gsub(/[^A-Z]/i,'').upcase.split(//) if options[:key]
       answer = arr.collect do |c|
         val = key ? alphabet.index(key[0]) : default_shift
         shift_value = encode ? val : (val * -1)
