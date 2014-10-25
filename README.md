@@ -54,6 +54,30 @@ Options other than those listed here are ignored.
 => "20-15 2-5 3-15-14-20-9-14-21-5-4..."
 > GravityFallsMessage.decode(message, 'a1z26')
 => "TO BE CONTINUED..."
+
+# decode a message using the atbash cipher
+> message = "MLG S.T. DVOOH ZKKILEVW."
+=> "MLG S.T. DVOOH ZKKILEVW."
+> GravityFallsMessage.decode(message, 'atbash')
+=> "NOT H.G. WELLS APPROVED."
+
+# decode a message using binary
+> message = "0101001101001000010011110101001001010100"
+=> "0101001101001000010011110101001001010100"
+> GravityFallsMessage.decode(message, 'binary')
+=> "SHORT"
+
+# decode a message using the caesar cipher
+> message = "ZHOFRPH WR JUDYLWB IDOOV."
+=> "ZHOFRPH WR JUDYLWB IDOOV."
+> GravityFallsMessage.decode(message, 'caesar')
+=> "WELCOME TO GRAVITY FALLS."
+
+# decode a message using the vigenere cipher
+> message = "NLMXQWWN IIZ LZFNF"
+=> "NLMXQWWN IIZ LZFNF"
+> GravityFallsMessage.decode(message, 'vigenere', key: 'WHATEVS')
+=> "REMEMBER BIG HENRY"
 ```
 
 ## Contributing
