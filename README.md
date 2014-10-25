@@ -43,7 +43,7 @@ Options other than those listed here are ignored.
 **Valid Options:**
 
 - `encode:` When present or `true`, switches the Cipher so it encodes the message rather than decoding it.
-- `key:` A `String`. Characters other than `/[a-zA-z]/` are ignored.
+- `key:` A `String`. Characters other than `/[a-zA-Z]/` are ignored.
 - `shift:` An `Integer` representing the number of characters to shift. Defaults to 3. Must be positive (for now). 
 
 ### Decoding Messages
