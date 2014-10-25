@@ -43,56 +43,56 @@ class GravityFallsMessageTest < Minitest::Test
       assert_equal solution, GravityFallsMessage.decode(cryptogram, 'a1z26')
     end
   end
-  
+
   should "decode a message using the atbash cipher" do
     @atbash_crypts.each_pair do |cryptogram, solution|
       assert_equal solution, GravityFallsMessage.decode(cryptogram, 'atbash')
     end
   end
-  
+
   should "decode a message using binary" do
     @binary_crypts.each_pair do |cryptogram, solution|
       assert_equal solution, GravityFallsMessage.decode(cryptogram, 'binary')
     end
   end
-  
+
   should "decode a message using the caesar cipher" do
     @caesar_crypts.each_pair do |cryptogram, solution|
       assert_equal solution, GravityFallsMessage.decode(cryptogram, 'caesar')
     end
   end
-  
+
   should "decode a message using the vigenere cipher" do
     @vigenere_crypts.each do |crypt|
       assert_equal crypt[:solution], GravityFallsMessage.decode(crypt[:cryptogram], 'vigenere', {key: crypt[:key]})
     end
   end
-  
-  
+
+
   should "encode a message using the a1z26 cipher" do
     @a1z26_crypts.each_pair do |cryptogram, solution|
       assert_equal cryptogram, GravityFallsMessage.encode(solution, 'a1z26')
     end
   end
-  
+
   should "encode a message using the atbash cipher" do
     @atbash_crypts.each_pair do |cryptogram, solution|
       assert_equal cryptogram, GravityFallsMessage.encode(solution, 'atbash')
     end
   end
-  
+
   should "encode a message using binary" do
     @binary_crypts.each_pair do |cryptogram, solution|
       assert_equal cryptogram, GravityFallsMessage.encode(solution, 'binary')
     end
   end
-  
+
   should "encode a message using the caesar cipher" do
     @caesar_crypts.each_pair do |cryptogram, solution|
       assert_equal cryptogram, GravityFallsMessage.encode(solution, 'caesar')
     end
   end
-  
+
   should "encode a message using the vigenere cipher" do
     @vigenere_crypts.each do |crypt|
       assert_equal crypt[:cryptogram], GravityFallsMessage.encode(crypt[:solution], 'vigenere', {key: crypt[:key]})

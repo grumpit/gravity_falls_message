@@ -1,15 +1,8 @@
 module GravityFallsMessage
   class Cipher
-
+    
     def self.alphabet
       ('A'..'Z').to_a
-    end
-  
-    def self.mapped_alphabet
-      alphabet.inject({}) do |hash, el|
-        hash[el] = (alphabet.index(el)+1)
-        hash
-      end
     end
   
     def self.a1z26 arr, encode=false
@@ -18,8 +11,8 @@ module GravityFallsMessage
           ''
         elsif /\W/ === c
           c
-        else
-          encode ? mapped_alphabet[c.upcase] : mapped_alphabet.key(c.to_i)
+        elsif c != ''
+          encode ? alphabet.index(c.upcase) + 1 : alphabet[c.to_i - 1]
         end
       end
       encode ? answer.join('-').gsub(/-?(\s|")-/, '\1').gsub(/-(\W)-?/,'\1') : answer.join('')
