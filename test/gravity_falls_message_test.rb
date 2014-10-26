@@ -36,6 +36,20 @@ class GravityFallsMessageTest < Minitest::Test
         solution: 'ANTHYDING CAN HADPLEN'
       }
     ]
+    
+    @two_position_caesar_crypts = {
+      'OAUVG' => "MYSTE",
+      'EWTUG AQW OCTKNAP' => "CURSE YOU MARILYN"
+    }
+    
+    @five_position_caesar_crypt = {
+      "YMNX NX F RTWJ HTRUQNHFYJI YJXY" => "THIS IS A MORE COMPLICATED TEST"
+    }
+    
+    @negative_shift_value_crypt = {
+      "OCDN DN V IZBVODQZ NCDAO QVGPZ OZNO" => "THIS IS A NEGATIVE SHIFT VALUE TEST"
+    }
+    
   end
   
   should "decode a message using the a1z26 cipher" do
@@ -61,14 +75,32 @@ class GravityFallsMessageTest < Minitest::Test
       assert_equal solution, GravityFallsMessage.decode(cryptogram, 'caesar')
     end
   end
-
+  
+  should "decode a message using the caesar cipher with a two position shift" do
+    @two_position_caesar_crypts.each_pair do |cryptogram, solution|
+      assert_equal solution, GravityFallsMessage.decode(cryptogram, 'caesar', shift: 2)
+    end
+  end
+  
+  should "decode a message using the caesar cipher with a five position shift" do
+    @five_position_caesar_crypt.each_pair do |cryptogram, solution|
+      assert_equal solution, GravityFallsMessage.decode(cryptogram, 'caesar', shift: 5)
+    end
+  end
+  
+  should "decode a message using the caesar cipher with a negative five position shift" do
+    @negative_shift_value_crypt.each_pair do |cryptogram, solution|
+      assert_equal solution, GravityFallsMessage.decode(cryptogram, 'caesar', shift: -5)
+    end
+  end
+  
   should "decode a message using the vigenere cipher" do
     @vigenere_crypts.each do |crypt|
       assert_equal crypt[:solution], GravityFallsMessage.decode(crypt[:cryptogram], 'vigenere', {key: crypt[:key]})
     end
   end
 
-
+  # Encode tests
   should "encode a message using the a1z26 cipher" do
     @a1z26_crypts.each_pair do |cryptogram, solution|
       assert_equal cryptogram, GravityFallsMessage.encode(solution, 'a1z26')
@@ -93,6 +125,24 @@ class GravityFallsMessageTest < Minitest::Test
     end
   end
 
+  should "encode a message using the caesar cipher with a two position shift" do
+    @two_position_caesar_crypts.each_pair do |cryptogram, solution|
+      assert_equal cryptogram, GravityFallsMessage.encode(solution, 'caesar', shift: 2)
+    end
+  end
+  
+  should "encode a message using the caesar cipher with a five position shift" do
+    @five_position_caesar_crypt.each_pair do |cryptogram, solution|
+      assert_equal cryptogram, GravityFallsMessage.encode(solution, 'caesar', shift: 5)
+    end
+  end
+  
+  should "encode a message using the caesar cipher with a negative five position shift" do
+    @negative_shift_value_crypt.each_pair do |cryptogram, solution|
+      assert_equal cryptogram, GravityFallsMessage.encode(solution, 'caesar', shift: -5)
+    end
+  end
+  
   should "encode a message using the vigenere cipher" do
     @vigenere_crypts.each do |crypt|
       assert_equal crypt[:cryptogram], GravityFallsMessage.encode(crypt[:solution], 'vigenere', {key: crypt[:key]})

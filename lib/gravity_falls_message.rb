@@ -13,6 +13,7 @@ module GravityFallsMessage
     when 'atbash' then Cipher.atbash(message)
     when 'binary' then Cipher.binary(message)
     when 'caesar' then Cipher.caesar(message, options)
+    when 'rotated_caesar' then Cipher.rotated_caesar(message, options)
     when 'vigenere' then Cipher.vigenere(message, options)
     end
   end
