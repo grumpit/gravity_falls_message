@@ -44,7 +44,7 @@ Options other than those listed here are ignored.
 
 - `encode:` When present or `true`, switches the Cipher so it encodes the message rather than decoding it.
 - `key:` A `String`. Characters other than `/[a-zA-Z]/` are ignored.
-- `shift:` An `Integer` representing the number of characters to shift. Defaults to 3. Must be positive (for now). 
+- `shift:` An `Integer` representing the number of characters to shift. Defaults to 3. 
 
 ### Decoding Messages
 
@@ -72,6 +72,12 @@ Options other than those listed here are ignored.
 => "ZHOFRPH WR JUDYLWB IDOOV."
 > GravityFallsMessage.decode(message, 'caesar')
 => "WELCOME TO GRAVITY FALLS."
+
+# decode a message using the caesar cipher with a specified shift
+> message = "THIS IS A MORE COMPLICATED TEST"
+=> "THIS IS A MORE COMPLICATED TEST"
+> GravityFallsMessage.decode(message, 'caesar', shift: 5)
+=> "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
 
 # decode a message using the vigenere cipher
 > message = "NLMXQWWN IIZ LZFNF"
@@ -106,6 +112,11 @@ Options other than those listed here are ignored.
 => "WELCOME TO GRAVITY FALLS."
 > GravityFallsMessage.encode(message, 'caesar')
 => "ZHOFRPH WR JUDYLWB IDOOV."
+
+# encode a message using the caesar cipher with a specified shift
+> message = "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
+=> "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
+> GravityFallsMessage.encode(message, 'caesar', shift: 5)
 
 # encode a message using the vigenere cipher
 > message = "REMEMBER BIG HENRY"
