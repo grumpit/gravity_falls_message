@@ -74,10 +74,10 @@ Options other than those listed here are ignored.
 => "WELCOME TO GRAVITY FALLS."
 
 # decode a message using the caesar cipher with a specified shift
-> message = "THIS IS A MORE COMPLICATED TEST"
-=> "THIS IS A MORE COMPLICATED TEST"
-> GravityFallsMessage.decode(message, 'caesar', shift: 5)
+> message = "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
 => "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
+> GravityFallsMessage.decode(message, 'caesar', shift: 5)
+=> "THIS IS A MORE COMPLICATED TEST"
 
 # decode a message using the vigenere cipher
 > message = "NLMXQWWN IIZ LZFNF"
@@ -114,9 +114,10 @@ Options other than those listed here are ignored.
 => "ZHOFRPH WR JUDYLWB IDOOV."
 
 # encode a message using the caesar cipher with a specified shift
-> message = "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
-=> "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
+> message = "THIS IS A MORE COMPLICATED TEST"
+=> "THIS IS A MORE COMPLICATED TEST"
 > GravityFallsMessage.encode(message, 'caesar', shift: 5)
+=> "YMNX NX F RTWJ HTRUQNHFYJI YJXY"
 
 # encode a message using the vigenere cipher
 > message = "REMEMBER BIG HENRY"
