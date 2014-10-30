@@ -23,7 +23,7 @@ module GravityFallsMessage
         if /\W/ === c
           c
         else
-          encode ? alphabet[alphabet.reverse.index(c.upcase)] : alphabet.reverse[alphabet.index(c.upcase)]
+          alphabet[alphabet.reverse.index(c.upcase)]
         end
       end
       answer.join('')
