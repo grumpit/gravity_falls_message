@@ -19,14 +19,7 @@ module GravityFallsMessage
     end
     
     def self.atbash arr, encode=false
-      answer = arr.collect do |c|
-        if /\W/ === c
-          c
-        else
-          alphabet[alphabet.reverse.index(c.upcase)]
-        end
-      end
-      answer.join('')
+      answer = arr.collect { |c| /\W/ === c ? c : alphabet[alphabet.reverse.index(c.upcase)] }.join('')
     end
     
     def self.binary input, encode=false
